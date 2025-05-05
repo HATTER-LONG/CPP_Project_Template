@@ -7,5 +7,5 @@ public:
     std::string get_greeting() const;
 
 private:
-    std::string name_;
+    std::string m_name;
 };

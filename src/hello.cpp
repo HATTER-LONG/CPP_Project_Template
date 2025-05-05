@@ -1,7 +1,7 @@
 #include "hello.h"
 
-Hello::Hello(const std::string& name) : name_(name) {}
+Hello::Hello(const std::string& name) : m_name(name) {}
 
 std::string Hello::get_greeting() const {
-    return "Hello, " + name_ + "! Welcom CMake C++ Project!";
+    return "Hello, " + m_name + "! Welcom CMake C++ Project!";
 }
