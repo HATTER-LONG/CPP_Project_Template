@@ -1,13 +1,25 @@
-#include "hello.h"
-#include <iostream>
+#include "mainwindow.h"
+#include <QApplication>
+#include <QLocale>
+#include <QTranslator>
+
 
 int main(int argc, char* argv[]) {
-    std::string name = "World";
+    QApplication a(argc, argv);
 
-    if(argc > 1) {
-        name = argv[1];
+    QTranslator translator;
+    const QStringList uiLanguages = QLocale::system().uiLanguages();
+
+    for(const QString& locale : uiLanguages) {
+        const QString baseName = "testqt_" + QLocale(locale).name();
+        if(translator.load(":/i18n/" + baseName)) {
+            a.installTranslator(&translator);
+            break;
+        }
     }
-    Hello hello(name);
-    std::cout << hello.get_greeting() << std::endl;
-    return 0;
+
+    Widget w;
+    w.show();
+
+    return a.exec();
 }
