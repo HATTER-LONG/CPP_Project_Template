@@ -2,6 +2,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Qt Application with Visual Studio Debugger",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "visualizerFile": "${command:qt-cpp.natvis}",
+            "sourceFileMap": {
+                "C:\\Users\\qt\\work\\qt": "D:\\DevelopTools\\QT\\6.9\\6.9.0\\Src"
+            },
+            "windows": {
+                "environment": [
+                    {
+                        "name": "PATH",
+                        "value": "${env:PATH};${command:qt-cpp.qtDir}"
+                    },
+                    {
+                        "name": "QT_QPA_PLATFORM_PLUGIN_PATH",
+                        "value": "${command:qt-cpp.QT_QPA_PLATFORM_PLUGIN_PATH}"
+                    },
+                    {
+                        "name": "QML_IMPORT_PATH",
+                        "value": "${command:qt-cpp.QML_IMPORT_PATH}"
+                    }
+                ]
+            }
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
@@ -78,6 +106,5 @@
             ],
             "externalConsole": true
         }
-
     ]
 }
